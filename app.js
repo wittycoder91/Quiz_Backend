@@ -17,6 +17,6 @@ connectToDatabase();
 
 // Start the Express server
 const PORT = 5000;
-app.listen(PORT, "0.0.0.0", () => {
+app.listen(PORT, () => {
   console.log(`Express server is running on port ${PORT}`);
 });
