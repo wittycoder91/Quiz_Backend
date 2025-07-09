@@ -125,12 +125,10 @@ auth.post("/user/forgetpassword", async (req, res) => {
 
     // Check if email was successfully sent
     if (result.body?.Messages?.[0]?.Status === "success") {
-      return res
-        .status(200)
-        .json({
-          success: true,
-          message: "Email sent successfully, please check your mailbox",
-        });
+      return res.status(200).json({
+        success: true,
+        message: "Email sent successfully, please check your mailbox",
+      });
     } else {
       console.error("Mailjet error:", result.body);
       return res
@@ -181,12 +179,8 @@ auth.get("/admin/get-allindustry", async (req, res) => {
 auth.get("/quiz/get-last-active", async (req, res) => {
   try {
     const result = await authCtrl.getLastActiveQuiz();
-    
-    if (result.success) {
-      res.status(200).json(result);
-    } else {
-      res.status(404).json(result);
-    }
+
+    res.status(200).json(result);
   } catch (e) {
     res.status(500).json({ success: false, message: `API error ${e.message}` });
   }
